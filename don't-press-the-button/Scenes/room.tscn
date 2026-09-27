@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://wxhylmbeqtnk"]
+[gd_scene load_steps=10 format=3 uid="uid://wxhylmbeqtnk"]
 
 [ext_resource type="PackedScene" uid="uid://b4bd2hgmjo3sx" path="res://Scenes/player.tscn" id="1_mbine"]
+[ext_resource type="PackedScene" uid="uid://gqu27a5tiilt" path="res://Scenes/button.tscn" id="2_lsht4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mbine"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -115,4 +116,7 @@ material_override = SubResource("StandardMaterial3D_fr46g")
 size = Vector3(9, 0.1, 7.3876953)
 
 [node name="Player" parent="." instance=ExtResource("1_mbine")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.19902605, 0.3547956, -0.32854643)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.19902605, 0.0547956, -0.32854643)
+
+[node name="Button" parent="." instance=ExtResource("2_lsht4")]
+transform = Transform3D(0.040000003, 0, 0, 0, 0.040000003, 0, 0, 0, 0.040000003, 0.1, 0, -0.6)

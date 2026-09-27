@@ -1,0 +1,98 @@
+[gd_scene load_steps=16 format=3 uid="uid://gqu27a5tiilt"]
+
+[ext_resource type="Script" uid="uid://doj4ovg2qo2qn" path="res://Scripts/button.gd" id="1_1cmwl"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1cmwl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cmwl"]
+albedo_color = Color(1.4160296, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0kpiu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lkjnc"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1cmwl"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0kpiu"]
+animation = &"clicking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smycg"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iju5o"]
+advance_mode = 2
+advance_condition = &"clicked"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_edukx"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_svtet"]
+states/Idle/node = SubResource("AnimationNodeAnimation_1cmwl")
+states/Idle/position = Vector2(300, 100)
+states/Start/position = Vector2(170, 100)
+states/clicking/node = SubResource("AnimationNodeAnimation_0kpiu")
+states/clicking/position = Vector2(437, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_smycg"), "Idle", "clicking", SubResource("AnimationNodeStateMachineTransition_iju5o"), "clicking", "Idle", SubResource("AnimationNodeStateMachineTransition_edukx")]
+
+[sub_resource type="Animation" id="Animation_1cmwl"]
+resource_name = "clicking"
+length = 0.3
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("El kebeer/El za3tot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0, 0.1, 1, 0, 0.1, 0, 0.3, 1, 0, 1, 0)
+
+[sub_resource type="Animation" id="Animation_0kpiu"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("El kebeer/El za3tot")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 0)
+
+[sub_resource type="Animation" id="Animation_nrk2b"]
+resource_name = "Idle"
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_smycg"]
+_data = {
+&"Idle": SubResource("Animation_nrk2b"),
+&"RESET": SubResource("Animation_0kpiu"),
+&"clicking": SubResource("Animation_1cmwl")
+}
+
+[node name="Button" type="StaticBody3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_1cmwl")
+
+[node name="El kebeer" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.7, 0, 0, 0, 0.096, 0, 0, 0, 1.7, 0, -0.09, 0)
+mesh = SubResource("CylinderMesh_1cmwl")
+skeleton = NodePath("El za3tot")
+
+[node name="El za3tot" type="MeshInstance3D" parent="El kebeer"]
+transform = Transform3D(0.5882353, 0, 0, 0, 3.125, 0, 0, 0, 0.5882353, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_1cmwl")
+mesh = SubResource("BoxMesh_0kpiu")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_lkjnc")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_svtet")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/clicked = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_smycg")
+}

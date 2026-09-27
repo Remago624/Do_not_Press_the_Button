@@ -10,6 +10,11 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _physics_process(delta: float) -> void:
 	
+	if %SeeCast.is_colliding():
+		var target = %SeeCast.get_collider()
+		if target.has_method("interact") and Input.is_action_just_pressed("Click"):
+			target.interact()
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
