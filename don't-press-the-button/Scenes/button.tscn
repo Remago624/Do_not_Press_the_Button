@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://gqu27a5tiilt"]
+[gd_scene load_steps=17 format=3 uid="uid://gqu27a5tiilt"]
 
 [ext_resource type="Script" uid="uid://doj4ovg2qo2qn" path="res://Scripts/button.gd" id="1_1cmwl"]
+[ext_resource type="AudioStream" uid="uid://513ljok1hj6r" path="res://assets/universfield-click-button-140881.mp3" id="2_0kpiu"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1cmwl"]
 
@@ -96,3 +97,7 @@ parameters/conditions/clicked = false
 libraries = {
 &"": SubResource("AnimationLibrary_smycg")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+stream = ExtResource("2_0kpiu")
