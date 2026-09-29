@@ -25,6 +25,9 @@ current = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -1.3113416e-07, -0.99999994, 0, 3, -4.3711385e-08, 0, 0, 0)
 
+[node name="2odam" type="Node3D" parent="Rot/Camera3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.5, -0.84362066, -1.3825662)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]

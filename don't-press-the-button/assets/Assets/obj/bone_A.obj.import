@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b1y7fis1846si"
+path="res://.godot/imported/bone_A.obj-5657d824a68846b2671a44bcff9ceb78.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bone_A.obj-5657d824a68846b2671a44bcff9ceb78.mesh"]
+
+source_file="res://assets/Assets/obj/bone_A.obj"
+dest_files=["res://.godot/imported/bone_A.obj-5657d824a68846b2671a44bcff9ceb78.mesh", "res://.godot/imported/bone_A.obj-5657d824a68846b2671a44bcff9ceb78.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

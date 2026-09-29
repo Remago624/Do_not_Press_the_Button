@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ch8gtsa7pl8c8"
+path="res://.godot/imported/grave_A.obj-79d56b8fdb04280f55240b8611aef70e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/grave_A.obj-79d56b8fdb04280f55240b8611aef70e.mesh"]
+
+source_file="res://assets/Assets/obj/grave_A.obj"
+dest_files=["res://.godot/imported/grave_A.obj-79d56b8fdb04280f55240b8611aef70e.mesh", "res://.godot/imported/grave_A.obj-79d56b8fdb04280f55240b8611aef70e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
