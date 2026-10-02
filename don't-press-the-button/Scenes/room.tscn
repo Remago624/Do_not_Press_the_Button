@@ -133,17 +133,6 @@ sides = 32
 [node name="Button" parent="Node3D/CSGCylinder3D" instance=ExtResource("2_lsht4")]
 transform = Transform3D(0.040000003, 0, 0, 0, 0.040000003, 0, 0, 0, 0.040000003, 0, 0.055599857, 0)
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.030206159, -0.7)
-material_override = SubResource("StandardMaterial3D_6mpvv")
-use_collision = true
-radius = 0.1
-height = 0.02
-sides = 24
-
-[node name="inst_2" type="Node3D" parent="Node3D/CSGCylinder3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.030206159, -1)
 material_override = SubResource("StandardMaterial3D_6mpvv")
@@ -155,6 +144,23 @@ sides = 24
 [node name="inst_1" type="Node3D" parent="Node3D/CSGCylinder3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
+[node name="display1" type="Marker3D" parent="Node3D/CSGCylinder3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.030206159, -0.7)
+material_override = SubResource("StandardMaterial3D_6mpvv")
+use_collision = true
+radius = 0.1
+height = 0.02
+sides = 24
+
+[node name="inst_2" type="Node3D" parent="Node3D/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="display2" type="Marker3D" parent="Node3D/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.030206159, -0.4)
 material_override = SubResource("StandardMaterial3D_6mpvv")
@@ -164,6 +170,9 @@ height = 0.02
 sides = 24
 
 [node name="inst_3" type="Node3D" parent="Node3D/CSGCylinder3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="display3" type="Marker3D" parent="Node3D/CSGCylinder3D4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_mbine")]

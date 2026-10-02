@@ -1,10 +1,10 @@
 extends Node3D
 
-@onready var inst_1 = $Node3D/CSGCylinder3D3/inst_1
-@onready var inst_2 = $Node3D/CSGCylinder3D2/inst_2
-@onready var inst_3 = $Node3D/CSGCylinder3D4/inst_3
+@onready var inst_1 = $Node3D/CSGCylinder3D3/display1
+@onready var inst_2 = $Node3D/CSGCylinder3D2/display2
+@onready var inst_3 = $Node3D/CSGCylinder3D4/display3
 
-var pumpkin = preload("res://Scenes/Pumpkin.tscn")
+var pumpkin = load("res://Scenes/Pumpkin.tscn")
 var instance
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

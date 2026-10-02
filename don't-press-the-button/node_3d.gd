@@ -2,7 +2,7 @@ extends Node3D
 var makan
 var hold = false
 var old_R
-@onready var bbb = $pumpkin_orange_small2/pumpkin_orange_small
+@onready var bbb = $pumpkin_orange_jackolantern/pumpkin_orange_jackolantern
 @onready var player = load("res://Scenes/player.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +28,8 @@ func _process(delta: float) -> void:
 		
 		if Input.is_action_just_pressed("R_reset"):
 			global_rotation = old_R
+			#rotation.x = 0
+			#rotation.y = 0
 		
 		
 		if Input.is_action_just_pressed("Click"):
@@ -35,9 +37,21 @@ func _process(delta: float) -> void:
 			hold = false
 			$CollisionShape3D.disabled = false
 
-func _on_global_a7a() -> void:#mesh lift
+func _on_global_a7a() -> void:#not lift but mekhalel gazar
 	queue_free()
 func _on_global_a7ten(makan_2odam) -> void: #lift
+	pass
+	#if hold == false:
+		#var old_makan = self.global_position
+		#global_position = makan_2odam
+		#hold = true
+		#old_R = global_rotation
+	#
+	#if hold == true:
+		#makan = makan_2odam
+	
+
+func interact(makan_2odam):
 	if hold == false:
 		var old_makan = self.global_position
 		global_position = makan_2odam
@@ -46,7 +60,4 @@ func _on_global_a7ten(makan_2odam) -> void: #lift
 	
 	if hold == true:
 		makan = makan_2odam
-	
-
-func interact():
 	print("etakhed")

@@ -1,21 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7100serhje30"]
 
 [ext_resource type="Script" uid="uid://d0vkfwsasis8y" path="res://node_3d.gd" id="1_s0bae"]
-[ext_resource type="PackedScene" uid="uid://q881lg2xoxw2" path="res://assets/Assets/gltf/pumpkin_orange_small.gltf" id="2_edsf5"]
+[ext_resource type="PackedScene" uid="uid://bd3bhvlesgoxn" path="res://assets/Assets/fbx/pumpkin_orange_jackolantern.fbx" id="3_edsf5"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s0bae"]
 points = PackedVector3Array(0.1281763, 0.1041277, 0.26559004, -0.11027512, 0.18627, -0.29414377, -0.1102805, 0.20463443, -0.29415813, -0.28359422, 0.18667895, 0.17377883, -0.009092892, 0.54278517, 0.009092892, 0.28479123, 0.25051537, -0.1653608, 0.009122141, 0.0033294992, -0.1098673, 0.15269814, 0.331863, 0.2425272, -0.2847834, 0.25056908, -0.16535625, -0.15525699, 0.013191413, 0.04566719, 0.25635567, 0.09496216, 0.15562607, -0.16231644, 0.28698006, 0.27050856, 0.15564261, 0.09499607, -0.25638294, 0.16232552, 0.2869808, -0.2705237, -0.20922883, 0.05060596, -0.14556536, 0.2705081, 0.28698003, 0.16231617, -0.15320504, 0.3410109, -0.23435345, -0.24252808, 0.3318632, 0.1526987, -0.15564495, 0.0949934, 0.2563868, 0.13741064, 0.012414177, 0.12822698, 0.047611587, 0.5258416, -0.047611587, 0.21899919, 0.049882926, -0.109499596, 0.16591878, 0.17675473, 0.2857522, -0.15564287, 0.09499578, -0.25638336, -0.23432678, 0.34101948, -0.15322451, 0.009486519, 0.5258416, 0.06664429, -0.2656377, 0.104060695, 0.12822701, 0.23423414, 0.3409928, -0.15316394, -0.12807365, 0.040260147, 0.2011931, -0.28576496, 0.1767504, -0.16592619, 0.294125, 0.1862225, -0.11026808, 0.23427637, 0.34100497, 0.15319155)
 
 [node name="Node3D" type="StaticBody3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_s0bae")
 
-[node name="pumpkin_orange_small2" parent="." instance=ExtResource("2_edsf5")]
-
-[node name="pumpkin_orange_small" parent="pumpkin_orange_small2" index="0"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_s0bae")
 
-[editable path="pumpkin_orange_small2"]
+[node name="pumpkin_orange_jackolantern" parent="." instance=ExtResource("3_edsf5")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="pumpkin_orange_jackolantern" parent="pumpkin_orange_jackolantern" index="0"]
+transform = Transform3D(100, 0, 0, 0, -4.3711384e-06, 99.99999, 0, -99.99999, -4.3711384e-06, 0, 0, 0)
+
+[editable path="pumpkin_orange_jackolantern"]

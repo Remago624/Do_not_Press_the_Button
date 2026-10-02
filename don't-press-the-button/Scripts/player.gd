@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-
+var target
+var somethinghold
 var hold = false
 @onready var rot = $Rot
 @onready var camera = $Rot/Camera3D
@@ -32,20 +33,19 @@ func _physics_process(delta: float) -> void:
 	else:
 		hit_see_target = from + -camera.global_transform.basis.z * 35.0
 	
-	if hold == true:
-		_a7ten(hit_see_target)
-		
-		if Input.is_action_just_pressed("Click"):
+	if Input.is_action_just_pressed("Click") and hold == true:
 			hold = false
 	
 	if %SeeCast.is_colliding():
-		var target = %SeeCast.get_collider()
+		target = %SeeCast.get_collider()
 		if target.has_method("interact") and Input.is_action_just_pressed("Click"):
-			target.interact()
-			if target.has_method("_on_global_a7ten"):
-				_a7ten(_2odam.global_position)
-				hold = true
+			target.interact(hit_see_target)
+			target.interact(hit_see_target)
+			hold = true
+			somethinghold = target
 	
+	if hold == true:
+		somethinghold.interact(hit_see_target)
 
 	
 	if not is_on_floor():
