@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsl7wddtdedp"]
+
+[ext_resource type="Script" uid="uid://d0vkfwsasis8y" path="res://node_3d.gd" id="1_ajxrd"]
+[ext_resource type="PackedScene" uid="uid://cqjw4dcbx06ue" path="res://assets/Assets/gltf/post_skull.gltf" id="2_ud3y1"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ajxrd"]
+points = PackedVector3Array(0.1, -1, 0.1, -0.1, -1, -0.1, 0.1, 0.9, 0.76, -0.1, 0.9, -0.1, 0.1, -1, -0.1, -0.1, -1, 0.1, 0.1, 0.9, -0.1, -0.1, 0.9, 0.1)
+
+[node name="Node3D" type="StaticBody3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_ajxrd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.490116e-08, 0.3382251, 1.490116e-08)
+shape = SubResource("ConvexPolygonShape3D_ajxrd")
+
+[node name="post_skull2" parent="." instance=ExtResource("2_ud3y1")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[editable path="post_skull2"]

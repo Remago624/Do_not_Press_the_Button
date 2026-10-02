@@ -5,7 +5,7 @@ extends StaticBody3D
 @onready var sound = $AudioStreamPlayer3D
 
 
-func interact():
+func pressed():
 	anim_tree["parameters/conditions/clicked"] = true
 	sound.play()
 	print("a7a")

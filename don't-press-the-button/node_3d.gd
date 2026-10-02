@@ -2,6 +2,10 @@ extends Node3D
 var makan
 var hold = false
 var old_R
+var y_change :float = 0.0
+var x_change :float = 0.0
+var z_change :float = 0.0
+
 @onready var bbb = $pumpkin_orange_jackolantern/pumpkin_orange_jackolantern
 @onready var player = load("res://Scenes/player.tscn")
 
@@ -15,7 +19,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if hold == true:
-		global_position = makan
+		global_position = makan + Vector3(x_change, y_change, z_change)
 		$CollisionShape3D.disabled = true
 		if Input.is_action_pressed("LM"):
 			rotate_y(deg_to_rad(1))
@@ -25,6 +29,11 @@ func _process(delta: float) -> void:
 			rotate_x(deg_to_rad(1))
 		if Input.is_action_pressed("Q"):
 			rotate_x(deg_to_rad(-1))
+		
+		if Input.is_action_pressed("up"):
+			y_change += 0.02
+		if Input.is_action_pressed("down"):
+			y_change -= 0.02
 		
 		if Input.is_action_just_pressed("R_reset"):
 			global_rotation = old_R

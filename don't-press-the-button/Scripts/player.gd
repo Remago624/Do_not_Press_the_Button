@@ -43,6 +43,8 @@ func _physics_process(delta: float) -> void:
 			target.interact(hit_see_target)
 			hold = true
 			somethinghold = target
+		if target.has_method("pressed") and Input.is_action_just_pressed("Click"):
+			target.pressed()
 	
 	if hold == true:
 		somethinghold.interact(hit_see_target)
