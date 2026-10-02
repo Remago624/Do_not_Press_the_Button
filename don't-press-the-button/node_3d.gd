@@ -1,6 +1,7 @@
 extends Node3D
 var makan
 var hold = false
+var old_R
 @onready var bbb = $pumpkin_orange_small2/pumpkin_orange_small
 @onready var player = load("res://Scenes/player.tscn")
 
@@ -14,15 +15,34 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if hold == true:
-		global_transform = makan
+		global_position = makan
+		$CollisionShape3D.disabled = true
+		if Input.is_action_pressed("LM"):
+			rotate_y(deg_to_rad(1))
+		if Input.is_action_pressed("RM"):
+			rotate_y(deg_to_rad(-1))
+		if Input.is_action_pressed("R"):
+			rotate_x(deg_to_rad(1))
+		if Input.is_action_pressed("Q"):
+			rotate_x(deg_to_rad(-1))
+		
+		if Input.is_action_just_pressed("R_reset"):
+			global_rotation = old_R
+		
+		
+		if Input.is_action_just_pressed("Click"):
+			print("test")
+			hold = false
+			$CollisionShape3D.disabled = false
 
 func _on_global_a7a() -> void:#mesh lift
 	queue_free()
 func _on_global_a7ten(makan_2odam) -> void: #lift
 	if hold == false:
-		var old_makan = self.global_transform
-		global_transform = makan_2odam
+		var old_makan = self.global_position
+		global_position = makan_2odam
 		hold = true
+		old_R = global_rotation
 	
 	if hold == true:
 		makan = makan_2odam
