@@ -10,13 +10,15 @@ var sensitivity = 0.01
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+signal item_bought
+
 func _ready() -> void:
-	print(_2odam)
+	print("666666")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("esc"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#if Input.is_action_just_pressed("esc"):
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	var from = camera.global_position
 	var to = from + -camera.global_transform.basis.z * 1000.0
@@ -38,16 +40,20 @@ func _physics_process(delta: float) -> void:
 	
 	if %SeeCast.is_colliding():
 		target = %SeeCast.get_collider()
-		if target.has_method("interact") and Input.is_action_just_pressed("Click"):
-			target.interact(hit_see_target)
+		if target != null and target.has_method("interact") and Input.is_action_just_pressed("Click"):
 			target.interact(hit_see_target)
 			hold = true
 			somethinghold = target
-		if target.has_method("pressed") and Input.is_action_just_pressed("Click"):
+			if target in SignalBus.spawned_items:
+				print(target,"77777776777")
+				item_bought.emit(target)
+		if target != null and target.has_method("pressed") and Input.is_action_just_pressed("Click"):
 			target.pressed()
 	
 	if hold == true:
 		somethinghold.interact(hit_see_target)
+		if Input.is_action_just_pressed("esc"):
+			hold = false
 
 	
 	if not is_on_floor():

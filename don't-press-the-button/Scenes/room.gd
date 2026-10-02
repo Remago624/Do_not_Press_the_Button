@@ -11,9 +11,14 @@ var shop_items = [
 	preload("res://Scenes/Post_skull.tscn"),
 	preload("res://Scenes/Skull_candle.tscn")
 ]
+var spawned_items = []
+
 var instance
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	generate_shop()
+
+func generate_shop() -> void:
 	var displays = [
 		inst_1,
 		inst_2,
@@ -24,8 +29,28 @@ func _ready() -> void:
 		instance = shop_items[index].instantiate()
 		$Node3D.add_child(instance)
 		instance.global_position = displays[i].global_position
-		print(i, "ayaaaa")
-
+		spawned_items.append(instance)
+	SignalBus.spawned_items = spawned_items
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func refresh_shop(item_taken):
+	spawned_items.erase(item_taken)
+	for item in spawned_items:
+		item.queue_free()
+	spawned_items.clear()
+	
+	await get_tree().create_timer(0.3).timeout
+	for i in range(10):
+		generate_shop()
+		await get_tree().create_timer(0.1).timeout
+		clear_shop()
+	await get_tree().create_timer(0.5).timeout
+	generate_shop()
+
+
+func clear_shop():
+	for item in spawned_items:
+		item.queue_free()
+	spawned_items.clear()

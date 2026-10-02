@@ -179,3 +179,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.050000004, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_mbine")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.19902605, 0.0547956, -0.32854643)
+
+[connection signal="item_bought" from="Player" to="." method="refresh_shop"]

@@ -1,5 +1,6 @@
 extends Node3D
 var makan
+var old_makan
 var hold = false
 var old_R
 var y_change :float = 0.0
@@ -34,12 +35,28 @@ func _process(delta: float) -> void:
 			y_change += 0.02
 		if Input.is_action_pressed("down"):
 			y_change -= 0.02
+		if Input.is_action_pressed("T_left"):
+			x_change += 0.02
+		if Input.is_action_pressed("T_right"):
+			x_change -= 0.02
+		if Input.is_action_pressed("Z_RightTrans"):
+			z_change += 0.02
+		if Input.is_action_pressed("Z_LeftTrans"):
+			z_change -= 0.02
 		
 		if Input.is_action_just_pressed("R_reset"):
 			global_rotation = old_R
+			y_change = 0
+			x_change = 0
+			z_change = 0
 			#rotation.x = 0
 			#rotation.y = 0
 		
+		if Input.is_action_just_pressed("esc"):
+			hold = false
+			print(old_makan, "old makan2")
+			global_position = old_makan
+			$CollisionShape3D.disabled = false
 		
 		if Input.is_action_just_pressed("Click"):
 			print("test")
@@ -62,10 +79,11 @@ func _on_global_a7ten(makan_2odam) -> void: #lift
 
 func interact(makan_2odam):
 	if hold == false:
-		var old_makan = self.global_position
+		old_makan = global_position
 		global_position = makan_2odam
 		hold = true
 		old_R = global_rotation
+		print(old_makan, "old makan1")
 	
 	if hold == true:
 		makan = makan_2odam
