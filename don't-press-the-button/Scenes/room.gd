@@ -3,7 +3,8 @@ extends Node3D
 @onready var inst_1 = $Node3D/Shop/CSGCylinder3D3/display1
 @onready var inst_2 = $Node3D/Shop/CSGCylinder3D2/display2
 @onready var inst_3 = $Node3D/Shop/CSGCylinder3D4/display3
-
+@onready var player = $Player
+@onready var player_SeeCast = $Player/Rot/Camera3D/SeeCast
 
 var shop_items = [
 	preload("res://Scenes/Pumpkin.tscn"),
@@ -36,18 +37,22 @@ func _process(delta: float) -> void:
 	pass
 
 func refresh_shop(item_taken):
+	player_SeeCast.enabled = false
+	
 	spawned_items.erase(item_taken)
 	for item in spawned_items:
 		item.queue_free()
 	spawned_items.clear()
 	
 	await get_tree().create_timer(0.3).timeout
+	$Node3D/AudioStreamPlayer3D.play()
 	for i in range(10):
 		generate_shop()
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.05).timeout
 		clear_shop()
 	await get_tree().create_timer(0.5).timeout
 	generate_shop()
+	player_SeeCast.enabled = true
 
 
 func clear_shop():

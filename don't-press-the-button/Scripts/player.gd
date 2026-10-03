@@ -7,7 +7,9 @@ var hold = false
 @onready var camera = $Rot/Camera3D
 @onready var _2odam = $"Rot/Camera3D/2odam"
 var sensitivity = 0.01
-const SPEED = 5.0
+var SPEED = 5.0
+var run_speed = 8.0
+var normal_speed = 5.0
 const JUMP_VELOCITY = 4.5
 
 signal item_bought
@@ -62,7 +64,11 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
+	
+	if Input.is_action_pressed("Run"):
+		SPEED = run_speed
+	else:
+		SPEED = normal_speed
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Backward")
