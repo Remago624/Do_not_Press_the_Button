@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://bvesr5ns11f80"]
+
+[ext_resource type="Texture2D" uid="uid://cy57sb5w0egqb" path="res://assets/the-human-deer/textures/deer_head_12.6_Deer_head_BaseColor.png" id="1_5o5rt"]
+[ext_resource type="Texture2D" uid="uid://ly60nss5r0tt" path="res://assets/the-human-deer/textures/deer_head_12.6_Deer_head_Emissive.png" id="1_i7q8o"]
+[ext_resource type="Texture2D" uid="uid://dde8ml2p2hdx8" path="res://assets/the-human-deer/textures/deer_head_12.6_Deer_head_Normal.png" id="2_a3wuu"]
+[ext_resource type="Texture2D" uid="uid://bliuaugsug3gs" path="res://assets/the-human-deer/textures/deer_head_12.6-Deer_head-AO.png" id="2_e56k1"]
+[ext_resource type="Texture2D" uid="uid://b10abltlrnkrr" path="res://assets/the-human-deer/textures/deer_head_12.6_Deer_head_Roughness.png" id="3_5o5rt"]
+
+[resource]
+resource_name = "Deer_head1"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_5o5rt")
+roughness_texture = ExtResource("3_5o5rt")
+emission_enabled = true
+emission_texture = ExtResource("1_i7q8o")
+normal_enabled = true
+normal_scale = 0.0
+normal_texture = ExtResource("2_a3wuu")
+ao_enabled = true
+ao_texture = ExtResource("2_e56k1")
+detail_normal = ExtResource("2_a3wuu")

@@ -1,14 +1,19 @@
-[gd_scene load_steps=26 format=3 uid="uid://wxhylmbeqtnk"]
+[gd_scene load_steps=31 format=3 uid="uid://wxhylmbeqtnk"]
 
 [ext_resource type="Script" uid="uid://s8782ianejsj" path="res://Scenes/room.gd" id="1_fr46g"]
 [ext_resource type="PackedScene" uid="uid://b4bd2hgmjo3sx" path="res://Scenes/player.tscn" id="1_mbine"]
 [ext_resource type="AudioStream" uid="uid://c6vcs6mxdvaml" path="res://assets/freesound_community-shuffle-cards-46455.mp3" id="2_6mpvv"]
 [ext_resource type="PackedScene" uid="uid://gqu27a5tiilt" path="res://Scenes/button.tscn" id="2_lsht4"]
 [ext_resource type="PackedScene" uid="uid://ch8olckoxwggn" path="res://Scenes/very_very_scary_monster.tscn" id="4_gkney"]
+[ext_resource type="Texture2D" uid="uid://dwpyre0q6ml7j" path="res://assets/2K/Poliigon_GrassPatchyGround_4585_BaseColor.jpg" id="6_03u2k"]
 [ext_resource type="Shader" uid="uid://bi3o8elbtqoni" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="6_ojh4s"]
+[ext_resource type="Texture2D" uid="uid://dm10qs0g7s2tt" path="res://assets/2K/Poliigon_GrassPatchyGround_4585_AmbientOcclusion.jpg" id="7_5fqy3"]
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="7_ilpkg"]
+[ext_resource type="Texture2D" uid="uid://kfjfwreo2xd1" path="res://assets/2K/Poliigon_GrassPatchyGround_4585_Normal.png" id="8_08xfw"]
 [ext_resource type="ArrayMesh" uid="uid://sptcpdx6wtm8" path="res://addons/simplegrasstextured/default_mesh.tres" id="8_jghof"]
+[ext_resource type="Texture2D" uid="uid://ppwubxl20fks" path="res://assets/2K/Poliigon_GrassPatchyGround_4585_Metallic.jpg" id="9_0tv2a"]
 [ext_resource type="Script" uid="uid://2juaclm8gc1n" path="res://addons/simplegrasstextured/grass.gd" id="9_wph6n"]
+[ext_resource type="Texture2D" uid="uid://cdhxspq237mv3" path="res://assets/2K/Poliigon_GrassPatchyGround_4585_Roughness.jpg" id="10_5fqy3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gkney"]
 sky_top_color = Color(0.15234375, 0.110449225, 0.07236327, 1)
@@ -48,8 +53,19 @@ agent_radius = 0.3
 [sub_resource type="BoxShape3D" id="BoxShape3D_gkney"]
 size = Vector3(0.23320313, 0.4165039, 0.90000004)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfrpb"]
-albedo_color = Color(0.039981626, 0.1640625, 0.044117656, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8klh"]
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("6_03u2k")
+metallic = 1.0
+metallic_texture = ExtResource("9_0tv2a")
+roughness_texture = ExtResource("10_5fqy3")
+normal_enabled = true
+normal_texture = ExtResource("8_08xfw")
+bent_normal_enabled = true
+ao_enabled = true
+ao_texture = ExtResource("7_5fqy3")
+detail_normal = ExtResource("8_08xfw")
+uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6mpvv"]
 size = Vector2(10, 10)
@@ -60,7 +76,7 @@ data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkney"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_03u2k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fqy3"]
 render_priority = 0
 shader = ExtResource("6_ojh4s")
 shader_parameter/albedo = Color(1, 0.52080953, 0.20596403, 1)
@@ -111,12 +127,10 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("1_mbine")]
-transform = Transform3D(-0.1, 0, 8.742279e-09, 0, 0.1, 0, -8.742279e-09, 0, -0.1, -10.930003, 0.12000002, 3.0599983)
+transform = Transform3D(-0.07071068, 0, -0.070710674, 0, 0.1, 0, 0.070710674, 0, -0.07071068, -9.830007, 0.12000002, -1.1900017)
 
 [node name="SpotLight3D" parent="Player/Rot/Camera3D/MeshInstance3D2" index="1"]
 light_color = Color(0.90625, 0.86902684, 0.79565567, 1)
-light_energy = 4.0
-light_volumetric_fog_energy = 0.1
 
 [node name="Very_very_scary_monster" parent="." instance=ExtResource("4_gkney")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -22.140003, 0.0004961133, -12.46)
@@ -279,7 +293,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2562504, 0, -2.3000002)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Maze"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.2, 2.4799976, 0, 2.4899998)
-material_override = SubResource("StandardMaterial3D_nfrpb")
+material_override = SubResource("StandardMaterial3D_b8klh")
 mesh = SubResource("PlaneMesh_6mpvv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Maze/MeshInstance3D"]
@@ -1128,7 +1142,7 @@ use_collision = true
 size = Vector3(0.1, 1, 7.1)
 
 [node name="SimpleGrassTextured" type="MultiMeshInstance3D" parent="."]
-material_override = SubResource("ShaderMaterial_03u2k")
+material_override = SubResource("ShaderMaterial_5fqy3")
 multimesh = SubResource("MultiMesh_5fqy3")
 script = ExtResource("9_wph6n")
 albedo = Color(1, 0.52080953, 0.20596403, 1)

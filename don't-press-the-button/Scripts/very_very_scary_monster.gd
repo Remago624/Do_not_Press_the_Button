@@ -25,7 +25,8 @@ func _physics_process(delta: float) -> void:
 		print(distance_between, "distance_between")
 		if distance_between <= 25.0:
 			anim_player.speed_scale = 0.8
-			speed = 8
+			speed = 8.0
+			$"../Player/Rot/Camera3D/MeshInstance3D2/SpotLight3D".light_color = Color.RED
 		else:
 			anim_player.speed_scale = 0.4
 			speed = 4.0

@@ -50,10 +50,12 @@ mesh = SubResource("BoxMesh_6t5aa")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Rot/Camera3D/MeshInstance3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.353642)
-light_energy = 3.0
+light_color = Color(0.90588236, 0.87058824, 0.79607844, 1)
+light_energy = 7.0
+light_volumetric_fog_energy = 0.1
 shadow_enabled = true
 spot_range = 35.0
-spot_angle = 40.0
+spot_angle = 35.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

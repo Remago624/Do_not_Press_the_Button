@@ -1,0 +1,24 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://cxajkfvrhfat7"]
+
+[ext_resource type="Texture2D" uid="uid://dctpc6ox5svjt" path="res://assets/the-human-deer/textures/deer_body_12_Deer_body_Emissive.png" id="1_jg0bu"]
+[ext_resource type="Texture2D" uid="uid://c5yfauhbgnxpn" path="res://assets/the-human-deer/textures/deer_body_12_Deer_body_BaseColor.png" id="1_m6r62"]
+[ext_resource type="Texture2D" uid="uid://by27fswdmy17s" path="res://assets/the-human-deer/textures/deer_body_12-Deer_body-AO.png" id="2_ttra2"]
+[ext_resource type="Texture2D" uid="uid://ciasup5dy3nwa" path="res://assets/the-human-deer/textures/deer_body_12_Deer_body_Normal.png" id="2_yc0cj"]
+[ext_resource type="Texture2D" uid="uid://cyx2y0bh4oh1w" path="res://assets/the-human-deer/textures/deer_body_12_Deer_body_Roughness.png" id="3_l8acl"]
+[ext_resource type="Texture2D" uid="uid://bfi5t58sup5r6" path="res://assets/the-human-deer/textures/deer_body_12_Deer_body_Height.png" id="5_qvh14"]
+
+[resource]
+resource_name = "Deer_body1"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_m6r62")
+roughness_texture = ExtResource("3_l8acl")
+emission_enabled = true
+emission_texture = ExtResource("1_jg0bu")
+normal_enabled = true
+normal_scale = 0.0
+normal_texture = ExtResource("2_yc0cj")
+ao_enabled = true
+ao_texture = ExtResource("2_ttra2")
+heightmap_enabled = true
+heightmap_texture = ExtResource("5_qvh14")
+detail_normal = ExtResource("2_yc0cj")
