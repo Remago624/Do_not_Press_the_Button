@@ -3,6 +3,7 @@ extends StaticBody3D
 @onready var anim_player = $AnimationPlayer
 @onready var anim_tree = $AnimationTree
 @onready var sound = $AudioStreamPlayer3D
+signal button_pressed
 
 
 func pressed():
@@ -11,6 +12,7 @@ func pressed():
 	print("a7a")
 	await get_tree().create_timer(0.3).timeout
 	anim_tree["parameters/conditions/clicked"] = false
+	button_pressed.emit()
 
 func _ready() -> void:
 	pass # Replace with function body.

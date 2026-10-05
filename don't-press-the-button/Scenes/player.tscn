@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4bd2hgmjo3sx"]
+[gd_scene load_steps=7 format=3 uid="uid://b4bd2hgmjo3sx"]
 
 [ext_resource type="Script" uid="uid://c62iv7rat27s" path="res://Scripts/player.gd" id="1_v0iea"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_f60y1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v0iea"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0iea"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cvnsp"]
+size = Vector3(0.2, 0.2, 0.67)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6t5aa"]
+size = Vector3(0.25, 0.25, 0.2)
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_v0iea")
@@ -28,6 +37,24 @@ transform = Transform3D(1, 0, 0, 0, -1.3113416e-07, -0.99999994, 0, 3, -4.371138
 [node name="2odam" type="Node3D" parent="Rot/Camera3D"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.5, -0.84362066, -1.3825662)
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Rot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.4, -0.5)
+material_override = SubResource("StandardMaterial3D_v0iea")
+mesh = SubResource("BoxMesh_cvnsp")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rot/Camera3D/MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.29744685)
+material_override = SubResource("StandardMaterial3D_v0iea")
+mesh = SubResource("BoxMesh_6t5aa")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Rot/Camera3D/MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.353642)
+light_energy = 3.0
+shadow_enabled = true
+spot_range = 35.0
+spot_angle = 40.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]
@@ -42,3 +69,23 @@ grow_horizontal = 2
 [node name="Label" type="Label" parent="CanvasLayer/BoxContainer"]
 layout_mode = 2
 text = "Press \"E\""
+
+[node name="Timer left" type="Label" parent="CanvasLayer"]
+offset_left = 542.0
+offset_top = 64.0
+offset_right = 677.0
+offset_bottom = 128.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.12016606, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "9.99"
+
+[node name="run" type="Label" parent="CanvasLayer"]
+offset_left = 493.0
+offset_top = 128.0
+offset_right = 728.0
+offset_bottom = 192.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0.12016606, 0, 1)
+theme_override_font_sizes/font_size = 42
+text = "is left, RUN!"
