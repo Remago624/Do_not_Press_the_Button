@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7100serhje30"]
 
-[ext_resource type="Script" uid="uid://d0vkfwsasis8y" path="res://node_3d.gd" id="1_s0bae"]
+[ext_resource type="Script" uid="uid://d0vkfwsasis8y" path="res://Scripts/node_3d.gd" id="1_s0bae"]
 [ext_resource type="PackedScene" uid="uid://i0rs2icxoqfb" path="res://assets/Assets/gltf/pumpkin_orange_jackolantern.gltf" id="2_s0bae"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_edsf5"]

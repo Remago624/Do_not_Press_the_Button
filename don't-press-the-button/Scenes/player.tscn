@@ -91,3 +91,10 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.12016606, 0, 1)
 theme_override_font_sizes/font_size = 42
 text = "is left, RUN!"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -1.5, -3.5, -1.3264235)

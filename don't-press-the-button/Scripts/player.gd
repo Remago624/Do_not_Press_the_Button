@@ -6,12 +6,13 @@ var hold = false
 @onready var rot = $Rot
 @onready var camera = $Rot/Camera3D
 @onready var _2odam = $"Rot/Camera3D/2odam"
+var coins = SignalBus.coins
 var sensitivity = 0.01
 var SPEED = 5.0
 var run_speed = 8.0
 var normal_speed = 5.0
 const JUMP_VELOCITY = 4.5
-
+var flash_ = true
 signal item_bought
 
 func _ready() -> void:
@@ -20,6 +21,13 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta: float) -> void:
+	$CanvasLayer/Label.text = "You have " + str(SignalBus.coins) + " coins"
+	if Input.is_action_just_pressed("Flash light") and flash_ == true:
+		flash_ = false
+		$Rot/Camera3D/MeshInstance3D2/SpotLight3D.light_energy = 0.0
+	elif Input.is_action_just_pressed("Flash light") and flash_ == false:
+		flash_ = true
+		$Rot/Camera3D/MeshInstance3D2/SpotLight3D.light_energy = 7.0
 	#if Input.is_action_just_pressed("esc"):
 		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
@@ -49,13 +57,14 @@ func _physics_process(delta: float) -> void:
 			else:
 				$CanvasLayer/BoxContainer/Label.visible = false
 		
-		if target != null and target.has_method("interact") and Input.is_action_just_pressed("Click"):
+		if target != null and target.has_method("interact") and Input.is_action_just_pressed("Click") and SignalBus.coins > 0:
 			target.interact(hit_see_target)
 			hold = true
 			somethinghold = target
 			if target in SignalBus.spawned_items:
 				print(target,"77777776777")
-				item_bought.emit(target)
+				if SignalBus.coins > 0:
+					item_bought.emit(target)
 		if target != null and target.has_method("pressed") and Input.is_action_just_pressed("Click"):
 			target.pressed()
 	else:

@@ -118,7 +118,6 @@ script = ExtResource("1_fr46g")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 stream = ExtResource("2_08xfw")
-volume_db = 80.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4gp0m")
@@ -133,14 +132,10 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Player" parent="." instance=ExtResource("1_mbine")]
-transform = Transform3D(0.1, 0, -1.1920929e-08, 0, 0.1, 0, 1.1920929e-08, 0, 0.1, -0.15000641, 0.12000002, -0.87000173)
+transform = Transform3D(-0.07071068, 0, -0.070710674, 0, 0.1, 0, 0.070710674, 0, -0.07071068, -9.830007, 0.12000002, -1.1900017)
 
 [node name="SpotLight3D" parent="Player/Rot/Camera3D/MeshInstance3D2" index="1"]
 light_color = Color(0.90625, 0.86902684, 0.79565567, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Player/CanvasLayer" index="4"]
-offset_right = 168.0
-offset_bottom = 51.0
 
 [node name="Very_very_scary_monster" parent="." instance=ExtResource("4_gkney")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -22.140003, 0.0004961133, -12.46)
@@ -255,30 +250,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
 [node name="display1" type="Marker3D" parent="Node3D/Shop/CSGCylinder3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.050000004, 0)
-
-[node name="Label3D" type="Label3D" parent="Node3D/Shop/CSGCylinder3D3"]
-auto_translate_mode = 1
-transform = Transform3D(-4.3711392e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711392e-08, -0.099999905, 0.04, 0.3)
-pixel_size = 0.0001
-text = "1Coin"
-font_size = 512
-outline_size = 32
-
-[node name="Label3D2" type="Label3D" parent="Node3D/Shop/CSGCylinder3D3"]
-auto_translate_mode = 1
-transform = Transform3D(-4.3711392e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711392e-08, -0.099999905, 0.04, 0.58000004)
-pixel_size = 0.0001
-text = "1Coin"
-font_size = 512
-outline_size = 32
-
-[node name="Label3D3" type="Label3D" parent="Node3D/Shop/CSGCylinder3D3"]
-auto_translate_mode = 1
-transform = Transform3D(-4.3711392e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711392e-08, -0.099999905, 0.04, 0.01000005)
-pixel_size = 0.0001
-text = "1Coin"
-font_size = 512
-outline_size = 32
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Node3D/Shop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.030206159, -0.7)
@@ -1195,16 +1166,6 @@ sgt_tool_shape = {
 }
 metadata/_custom_type_script = "uid://2juaclm8gc1n"
 metadata/SimpleGrassTextured = "2.0.5"
-
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.036335256, 0)
-
-[node name="Very_very_scary_monster2" parent="." instance=ExtResource("4_gkney")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 3.1747658, -0.045107767, 2.453551)
-script = null
-
-[node name="Camera3D" type="Camera3D" parent="Very_very_scary_monster2"]
-transform = Transform3D(-0.33333334, 0, -2.9140928e-08, 0, 0.33333334, 0, 2.9140928e-08, 0, -0.33333334, 0, 1.6333338, -0.30000067)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="item_bought" from="Player" to="." method="refresh_shop"]

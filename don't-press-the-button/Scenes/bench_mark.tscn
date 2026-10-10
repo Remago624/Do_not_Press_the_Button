@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw1rxnkine8om"]
+
+[ext_resource type="Script" uid="uid://d0vkfwsasis8y" path="res://Scripts/node_3d.gd" id="1_uk32e"]
+[ext_resource type="PackedScene" uid="uid://6j76aymyh4dq" path="res://assets/Assets/gltf/bench.gltf" id="2_goysr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0y1k6"]
+size = Vector3(0.6, 0.13776855, 0.2)
+
+[node name="Node3D" type="StaticBody3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_uk32e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 1.1175872e-08, 0.024109479, 1.117587e-08)
+shape = SubResource("BoxShape3D_0y1k6")
+
+[node name="bench2" parent="." instance=ExtResource("2_goysr")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
