@@ -21,6 +21,8 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta: float) -> void:
+	
+	
 	$CanvasLayer/Label.text = "You have " + str(SignalBus.coins) + " coins"
 	if Input.is_action_just_pressed("Flash light") and flash_ == true:
 		flash_ = false
@@ -57,6 +59,10 @@ func _physics_process(delta: float) -> void:
 			else:
 				$CanvasLayer/BoxContainer/Label.visible = false
 		
+		if target != null and target.has_method("interact") and Input.is_action_just_pressed("Click") and !target in SignalBus.spawned_items:
+			target.interact(hit_see_target)
+			hold = true
+			somethinghold = target
 		if target != null and target.has_method("interact") and Input.is_action_just_pressed("Click") and SignalBus.coins > 0:
 			target.interact(hit_see_target)
 			hold = true
@@ -110,3 +116,10 @@ func _a7a():
 	SignalBus.global_a7a.emit()
 func _a7ten(hit_see_target):
 	SignalBus.global_a7ten.emit(hit_see_target)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("fullscreen"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
